@@ -1,0 +1,6 @@
+#!/bin/bash
+curl -X POST https://www.hackthebox.eu/api/invite/generate | cut -d: -f4 | sed 's/\","format"//g' > boss.txt
+sed 's/\"//g' boss.txt > keytosucess.txt
+(rm boss.txt) & base64 -d keytosucess.txt > bosskey.txt
+(rm keytosucess.txt) & (clear)
+echo "hackthebox.eu invite code is: $(<bosskey.txt)" & rm bosskey.txt
